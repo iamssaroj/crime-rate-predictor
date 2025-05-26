@@ -1,6 +1,8 @@
 import streamlit as st
-import joblib
+import pandas as pd
 import numpy as np
+import joblib
+from sklearn.linear_model import LogisticRegression
 
 # Load the model and scaler
 model = joblib.load('logistic_model.pkl')
