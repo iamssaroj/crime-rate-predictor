@@ -11,6 +11,35 @@ scaler = joblib.load('scaler.pkl')
 # Page configuration
 st.set_page_config(page_title="Crime Rate Predictor", layout="centered", page_icon="🔍")
 
+# Custom background and layout styling
+st.markdown(
+    """
+    <style>
+        /* Set background color or image */
+        .stApp {
+            background-color: #F0F2F6;  /* Light gray-blue background */
+            background-image: url("https://www.transparenttextures.com/patterns/white-wall.png");
+            background-size: cover;
+        }
+
+        /* Style for the containers and inputs */
+        .css-1d391kg {  /* Streamlit container */
+            background-color: #ffffff !important;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Change font and spacing */
+        html, body, [class*="css"]  {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 16px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Header section
 st.markdown(
     """
@@ -70,7 +99,7 @@ if st.button("🧠 Predict Crime Category"):
         st.markdown(
             "<div style='background-color:#FFCCCC;padding:20px;border-radius:10px;'>"
             "<h3 style='color:red;'>🔴 Prediction: High Crime Rate</h3>"
-            "<p>Consider improving literacy, employment, and addiction support programs.</p>"
+            "<p>Consider improving literacy, employment, and other support programs.</p>"
             "</div>",
             unsafe_allow_html=True
         )
@@ -89,4 +118,3 @@ st.markdown(
     "<p style='text-align:center;font-size:12px;'>Developed by Santosh | Powered by Logistic Regression</p>",
     unsafe_allow_html=True
 )
-
