@@ -28,3 +28,14 @@ if st.button("Predict Crime Category"):
         st.error("🔴 High Crime Rate")
     else:
         st.success("🟢 Low Crime Rate")
+
+
+# Check if model is multiclass
+st.subheader("🔍 Model Info")
+
+try:
+    st.write("Classes:", model.classes_)
+    st.write("Number of Classes:", len(model.classes_))
+    st.write("Model multi_class setting:", model.multi_class if hasattr(model, 'multi_class') else "Not available")
+except Exception as e:
+    st.warning(f"Couldn't read model attributes: {e}")
