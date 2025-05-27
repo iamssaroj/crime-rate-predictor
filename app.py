@@ -94,12 +94,19 @@ if st.button("🧠 Predict Crime Category"):
     input_data = np.array([[density, income, literacy, unemployment, addiction]])
     scaled_input = scaler.transform(input_data)
     prediction = model.predict(scaled_input)
+    probability = model.predict_proba(scaled_input)[0][1]  # Probability of High Crime
 
+    # Show confidence/probability visually
+    st.subheader("📈 Model Confidence")
+    st.progress(int(probability * 100))
+    st.markdown(f"🔢 **Confidence:** `{round(probability*100, 2)}%` chance of High Crime Rate")
+
+    # Show prediction message
     if prediction[0] == 1:
         st.markdown(
             "<div style='background-color:#FFCCCC;padding:20px;border-radius:10px;'>"
             "<h3 style='color:red;'>🔴 Prediction: High Crime Rate</h3>"
-            "<p>Consider improving literacy, employment, and other support programs.</p>"
+            "<p>Consider improving literacy, employment, and addiction support programs.</p>"
             "</div>",
             unsafe_allow_html=True
         )
@@ -111,6 +118,7 @@ if st.button("🧠 Predict Crime Category"):
             "</div>",
             unsafe_allow_html=True
         )
+)
 
 # Footer
 st.markdown("---")
