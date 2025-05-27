@@ -118,7 +118,6 @@ if st.button("🧠 Predict Crime Category"):
             "</div>",
             unsafe_allow_html=True
         )
-)
 
 # Footer
 st.markdown("---")
